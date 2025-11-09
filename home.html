@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Recommendation Chatbot</title>
+    <style>
+        /* Internal CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://i.postimg.cc/bNRFZ8h6/1000148358.png');
+            background-size: cover;
+            color: #0a0a0a;
+            font-size: 16px;
+            line-height: 1.5;
+            text-align: center;
+            box-sizing: border-box;
+            overflow-wrap: break-word;
+        }
+
+        header {
+            padding: 20px 0;
+            text-align: center;
+            background-color: #078953;
+            color: #fff;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;  
+            font-size: 36px;    
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-transform: uppercase;
+            line-height: 1.5;
+            font-family: 'Roboto', sans-serif;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        header h1:hover {
+            color: #e81b1b;
+        }
+
+        footer {
+            padding: 10px 10px;
+            text-align: center;
+            color: #0a0a0a;
+            background-color: #95b6f9;
+            margin-top: 50%;
+        }
+
+        nav {
+            background-color: #f5efef;
+            padding: 10px 0;
+            text-align: end;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: black;
+            font-size: 16px;
+        }
+
+        nav a {
+            color: #040404;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.5;
+        }
+
+        nav a:hover {
+            color: #e81b1b;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .container h2 {
+            margin-bottom: 20px;
+        }
+
+        /* Adjust the position of the chatbot container */
+        .chatbot-container {
+            position: fixed;
+            bottom: 60px; /* Adjust according to the height of the button and padding */
+            right: 20px;
+            z-index: 999; /* Ensure it appears above other elements */
+        }
+
+        .chatbot-container {
+            width: 50%;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+
+        .chatbot-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999; /* Ensure it appears above other elements */
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .chatbot-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .bot-animation1 {
+            width: 600px;
+            height: 100px;
+            margin-bottom: 0px;
+            margin-top: 0px;
+        }
+
+        .recommendations-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .recommendation-card {
+            width: calc(25% - 20px); /* 25% width with margin */
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Adding transition effect */
+        }
+
+        .recommendation-card:hover {
+            transform: scale(1.05); /* Zoom effect on hover */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Shadow effect on hover */
+        }
+
+        .recommendation-image {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Additional CSS for Advertisement section */
+    </style>
+</head>
+
+<body>
+   
+
+    
+    
+
+        <!-- MusicBot button -->
+        <div class="chatbot-container">
+            <button class="chatbot-btn" onclick="openChatbot()">
+                <img src="https://cdn3.iconfinder.com/data/icons/chat-bot-glyph-silhouettes-1/300/1411556Untitled-3-512.png" alt="MusicBot" style="width: 30px; height: 30px;"> Click Here To Chat With MusicBot
+            </button>
+        </div>
+
+        <!-- MusicBot with Bot emoji and live animation -->
+        <div class="chatbot-container" id="musicBot" style="display: none;">
+            <h2>MusicBot</h2>
+            <img src="https://i.postimg.cc/SNjY0xjC/1000148366.jpg" alt="Bot" class="bot-animation1">
+            <iframe src="index.html" width="100%" height="400px" frameborder="0"></iframe>
+            <button class="chatbot-btn" onclick="closeChatbot()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function openChatbot() {
+            document.getElementById("musicBot").style.display = "block";
+            document.getElementById("musicBot").style.animation = "botFloat 2s ease-in-out infinite alternate";
+        }
+
+        function closeChatbot() {
+            document.getElementById("musicBot").style.display = "none";
+        }
+
+        // Function to fetch music recommendations from Last.fm API
+        function fetchMusicRecommendations(emotion) {
+            // Music recommendations data with image URLs
+            const recommendations = [
+
+            ];
+
+            // Display recommendations on the webpage
+            displayRecommendations(recommendations);
+        }
+
+        // Call the fetchMusicRecommendations function with the desired emotion tag
+        const emotion = 'happy'; // Replace with the desired emotion tag
+        fetchMusicRecommendations(emotion);
+    </script>
+</body>
+
+</html>
+
